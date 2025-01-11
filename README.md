@@ -46,5 +46,5 @@ This project focuses on using steganography and forensic analysis tools to embed
 ---
 
 ## Resources
-- [Steganography Lab Guide](https://github.com/StephVergil/Cybersecurity-Projects/blob/main/Steganography_lab%20Cengage.docx)
-- [Lab Results and Forensic Report](https://github.com/StephVergil/Cybersecurity-Projects/blob/main/SteganographyResults.aspx.pdf)
+[Steganography Lab Instructions](https://github.com/StephVergil/Computer-System-Forensics/blob/main/Steganography_lab%20Cengage.docx), 
+[Steganography Lab Results](https://github.com/StephVergil/Computer-System-Forensics/blob/main/SteganographyResults.aspx.pdf)

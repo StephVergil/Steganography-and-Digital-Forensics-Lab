@@ -1,115 +1,72 @@
-# Steganography and Digital Forensics Lab: A Comprehensive Guide
+# Steganography and Digital Forensics Lab - README
 
-## Overview
-This project delves into the dual worlds of steganography and digital forensics, providing hands-on experience with embedding, extracting, and recovering hidden data from files. By using advanced forensic tools like **HxD**, **ProDiscover**, and **WinHex**. Learn crucial techniques such as hexadecimal analysis, data carving, and the detection of hidden information.
+This README provides a step-by-step guide to the processes and tools used to analyze forensic images, uncover hidden data, and reconstruct fragmented files. The project focuses on using industry-standard forensic tools such as **HxD**, **ProDiscover Basic**, and spreadsheet utilities.
 
----
+## Tools Used
 
-## Learning Objectives
-
-1. **Understand Hexadecimal Data**:
-   - Learn how hexadecimal and Unicode are used to store and manipulate digital data.
-   - Develop the ability to interpret file headers, metadata, and raw file structures.
-
-2. **Master File Recovery Techniques**:
-   - Gain expertise in extracting fragmented files from disk images using data carving.
-   - Validate recovered files by analyzing metadata and reconstructing original structures.
-
-3. **Explore Steganography**:
-   - Learn how to embed hidden data within image files.
-   - Detect and extract hidden information using forensic tools.
-
-4. **Apply Forensic Tools**:
-   - Familiarize yourself with industry-standard tools like **HxD**, **ProDiscover**, and **WinHex**.
-   - Practice in a controlled, simulated environment to develop practical skills.
+1. **[HxD Hex Editor](https://mh-nexus.de/en/hxd/)** – A powerful tool for viewing and editing raw binary data at the hexadecimal level.
+2. **[ProDiscover Basic](https://prodiscover.com)** – A forensic investigation tool used to analyze disk images and recover hidden or deleted files.
+3. **Notepad** – Simple text editor to manage and search for text-based forensic data.
+4. **OpenOffice Calc** – Spreadsheet tool for organizing and calculating data offsets.
+5. **Practice Labs** – A virtual environment to execute forensic investigations.
+6. **Graphing Software** – Used to visualize data run calculations for better understanding.
+7. **PDF/Text Editors** – To analyze and document recovered emails, reports, and metadata.
 
 ---
 
-## Key Concepts and Techniques
+## Steps to Achieve Results
 
-### 1. **Hexadecimal Analysis**
-   - **Purpose**: Hexadecimal data represents the binary content of files in a human-readable format.
-   - **Applications in Forensics**:
-     - Identifying file types by their headers (magic numbers).
-     - Searching for specific patterns or text strings within a file.
-     - Verifying file integrity by analyzing metadata and checksums.
-   - **Teaching Example**:
-     - Convert the string `"Kayak4"` to hexadecimal:
-       ```plaintext
-       ASCII: K  a  y  a  k  4
-       Hex:   4B 61 79 61 6B 34
-       ```
-     - Use these values to search for `"Kayak4"` in a disk image using HxD or WinHex.
+### 1. Installing HxD Hex Editor
+Downloading and installing HxD from the [official website](https://mh-nexus.de/en/hxd/) is the first step in the forensic analysis process. The installation involves following the step-by-step setup wizard, accepting the license agreement, and choosing default settings for optimal performance. A desktop shortcut should be created to allow quick access to the tool. HxD plays a crucial role in forensic investigations by allowing the examination of raw hexadecimal values within files and disk images. Analysts can manipulate binary data at a granular level, enabling them to uncover hidden data embedded within files and disk structures.
 
 ---
 
-### 2. **Data Carving and File Recovery**
-   - **What is Data Carving?**
-     - The process of reconstructing files from raw data by analyzing fragments and file headers.
-   - **Common Challenges**:
-     - Fragmentation: Files may not be stored in contiguous blocks.
-     - Missing Metadata: Deleted files often lack directory entries, making recovery dependent on headers.
-   - **Teaching Example**:
-     - Disk Image: `InMod15New.dd`.
-     - Use ProDiscover or WinHex to:
-       - Extract JPEG fragments starting with the magic number `FF D8`.
-       - Reassemble fragments into a complete image.
-       - Verify the file by examining its metadata (e.g., creation date, file size).
+### 2. Extracting the Disk Image
+To begin the analysis, the forensic disk image must be extracted. Investigators navigate to `C:\Work\Data files\Mod15\InMod15.zip`, right-click the archive, and select **"Extract All..."** to unpack its contents. Once extracted, the `InMod15New.dd` image file becomes accessible for further forensic investigation. Extracting the disk image is critical, as it ensures the data is accessible in its raw form, enabling deeper analysis for potential hidden or deleted information. Proper extraction also maintains data integrity, a crucial aspect of forensic analysis.
 
 ---
 
-### 3. **Steganography Techniques**
-   - **What is Steganography?**
-     - A technique for embedding hidden information within digital files, such as images or audio.
-   - **Embedding Data**:
-     - Use steganographic tools to hide a message (e.g., `"Confidential"`) within an image.
-     - Validate the process by checking the original and modified file sizes.
-   - **Detecting Hidden Data**:
-     - Inspect the file structure for anomalies, such as added bytes or patterns.
-     - Use forensic tools to extract and interpret embedded messages.
-   - **Teaching Example**:
-     - Hide the message `"SecretKey"` inside a `.png` file.
-     - Detect the hidden message by analyzing residual data using WinHex.
+### 3. Hexadecimal Value Analysis with HxD
+In this step, forensic investigators use HxD to open the extracted disk image and analyze hexadecimal values within files. Investigators can manually input text characters and observe their corresponding hexadecimal representations. By adding null characters (`00`), they can simulate Unicode data storage, which is essential when searching for encoded or hidden information. This method allows forensic experts to identify concealed messages, patterns, or anomalies within the disk image. The saved hexadecimal file is later used for forensic searches and pattern matching.
 
 ---
 
-## Lab Steps
-
-### Step 1: **Hexadecimal Analysis**
-   - Open a disk image in HxD or WinHex.
-   - Search for specific strings or patterns in the raw data.
-   - Example Task:
-     - Locate the string `"Password123"` by converting it to hexadecimal (`50 61 73 73 77 6F 72 64 31 32 33`) and searching for it in a disk image.
-
-### Step 2: **Data Carving**
-   - Open the disk image `InMod15New.dd` in ProDiscover.
-   - Identify file fragments based on their headers and footers (e.g., `JPEG` files start with `FF D8` and end with `FF D9`).
-   - Extract and concatenate the fragments to reconstruct the full file.
-   - Analyze the recovered file’s metadata for timestamps, owner information, and integrity.
-
-### Step 3: **Steganography**
-   - Embed a hidden message within an image using a steganographic tool.
-   - Validate the embedding by comparing the original and modified image files.
-   - Extract the hidden message using forensic tools and verify its accuracy.
+### 4. Searching for Hidden Data using ProDiscover Basic
+Once the disk image is prepared, investigators employ ProDiscover Basic to create a forensic project named `InMod15`. The image file `InMod15New.dd` is loaded into the project, enabling analysts to conduct comprehensive searches for specific hexadecimal patterns extracted earlier. Investigators focus on files such as `pagefile.sys`, which often contain traces of previously deleted or hidden files. ProDiscover's robust search capabilities help pinpoint critical evidence that may have been overlooked, allowing the recovery of vital data fragments.
 
 ---
 
-## Tools and Resources
+### 5. Interpreting Data Runs and Extracting Clusters
+Analyzing data runs is a fundamental forensic technique used to recover fragmented files. By opening `pagefile.sys` in HxD, investigators can locate important metadata, such as the **Master File Table (MFT)** entries, which provide information about file locations and attributes. Using OpenOffice Calc, forensic analysts calculate cluster positions and offsets to reconstruct fragmented files. Understanding data runs allows experts to map out the disk structure and locate critical fragments of deleted or hidden files for successful recovery.
 
-### Tools Used
-1. **HxD**:
-   - A powerful hexadecimal editor for analyzing and editing raw file data.
-   - Ideal for forensic searches and file structure analysis.
+---
 
-2. **ProDiscover**:
-   - A digital forensic tool for disk imaging, data carving, and file recovery.
-   - Provides a user-friendly interface for extracting and analyzing data from disk images.
+### 6. Recovering Graph and Email Data
+Forensic investigators utilize ProDiscover to search for file types such as emails (`.eml`) and spreadsheets (`.xlsx`). Once found, these files are exported and further examined for metadata, including sender details, timestamps, and message content. Analyzing emails often reveals valuable information related to the case, such as communication patterns or hidden messages. Additionally, graphing software is used to visualize the data runs, providing forensic experts with insights into fragmentation patterns and aiding in better documentation of the recovered data.
 
-3. **WinHex**:
-   - Advanced hexadecimal editor with features for disk analysis, data recovery, and steganographic detection.
+---
 
-4. **Practice Labs Environment**:
-   - A controlled setting for simulating real-world forensic scenarios.
+### 7. Data Carving for File Recovery
+Data carving is a meticulous process where forensic analysts recover fragmented files by extracting clusters manually from the disk image. Using ProDiscover's cluster analysis features, investigators identify relevant clusters and save them for reconstruction. Since files may be scattered across different sectors, careful analysis is required to ensure proper order and integrity of the recovered files. This technique is crucial when dealing with partially deleted files, allowing forensic experts to reassemble usable data.
+
+---
+
+### 8. Concatenating and Rebuilding the File
+Once the fragmented data is collected, investigators use HxD’s **Concatenate** function to merge the recovered fragments into a single, complete file such as `Kayak4.jpg`. This process involves aligning fragments in the correct order to ensure the reconstructed file's integrity. Once merged, the file is tested by opening it to verify successful recovery. Concatenation ensures that all data pieces are seamlessly joined, restoring the file to its original state.
+
+---
+
+### 9. Verification and Reporting
+The final step in the forensic process is verification and reporting. Investigators verify the integrity of recovered files using hash verification techniques such as MD5 or SHA-256 to ensure data authenticity. A comprehensive forensic report is generated, documenting timestamps, file structures, investigative procedures, and findings. This documentation serves as critical evidence in legal proceedings and must be thorough, accurate, and compliant with forensic standards.
+
+---
+
+## Summary of Results
+
+- **Graph** – Visualized data clusters and fragmentation.
+- **Email** – Extracted metadata and timestamps.
+- **Documents** – Recovered files, including PDFs and spreadsheets.
+- **Final Recovery** – Successful retrieval of `Kayak4.jpg`.
 
 ---
 
@@ -129,9 +86,8 @@ This project delves into the dual worlds of steganography and digital forensics,
 
 ---
 
-## Resources for Learning
+## Resources 
 
-- **Lab Instructions**: [Steganography Lab Instructions](https://github.com/StephVergil/Computer-System-Forensics/blob/main/Steganography_lab%20Cengage.docx)  
 - **Lab Results**: [Steganography Lab Results](https://github.com/StephVergil/Computer-System-Forensics/blob/main/SteganographyResults.aspx.pdf)
   
 - **Additional Reading**:
